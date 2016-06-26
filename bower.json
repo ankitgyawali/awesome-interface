@@ -1,0 +1,30 @@
+{
+  "name": "awesome-interface",
+  "description": "Awesome Interface",
+  "main": "index.html",
+  "keywords": [
+    "Awesome",
+    "Interface"
+  ],
+  "authors": [
+    "Ankit Gyawali"
+  ],
+  "license": "MIT",
+  "homepage": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.16",
+    "angular": "~1.2.16",
+    "bootstrap": "~3.1.1",
+    "css-toggle-switch": "~2.1.5",
+    "entypo": "*",
+    "flot": "~0.8.3",
+    "rangeslider.js": "~0.2.8"
+  }
+}
