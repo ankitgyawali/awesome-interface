@@ -1,5 +1,30 @@
 <h1 class="ng-scope">{{root.headers[displayIndex].titleDetails[subdisplayIndex].name}}</h1>
-<h3>{{root.headers[displayIndex].title}} > {{root.headers[displayIndex].titleDetails[subdisplayIndex].name}}</h3>
+<h3><a href="#/awesome/{{root.headers[displayIndex].title}}">{{root.headers[displayIndex].title}}</a> > <a href="#/awesome/{{root.headers[displayIndex].title}}/{{root.headers[displayIndex].titleDetails[subdisplayIndex].name}}">{{root.headers[displayIndex].titleDetails[subdisplayIndex].name}}</a></h3>
 <hr class="ng-scope">
 
-{{root.headers[displayIndex].titleDetails[subdisplayIndex]}}
+<!-- {{root.headers[displayIndex].titleDetails[subdisplayIndex]}}
+ -->
+
+<ul>
+	<li ng-repeat="title in root.headers[displayIndex].titleDetails[subdisplayIndex].details.title">{{title.name}} 
+			
+			<ul>
+				<li ng-repeat="titlelink in title.links">
+				<a href="{{titlelink.url}}" target="_blank">{{titlelink.name}}</a>
+				<span ng-if="isDesc(titlelink.detail)"><br>{{titlelink.detail}}</span>
+				</li>
+			</ul>
+			<ul ng-if="title.subheaders.length">
+				<li ng-repeat="subheader in title.subheaders">
+					{{subheader.title}}
+					<ul>
+						<li ng-repeat="link in subheader.links"><a href="{{link.url}}" target="_blank">{{link.name}}</a><br>
+						<span ng-if="isDesc(link.detail)">{{link.detail}}</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+	</li>
+
+
+</ul>

@@ -19,10 +19,15 @@ angular.module('myApp.controllers', [])
             $scope.subdisplayIndex = idx;
         }
 
+        $scope.isDesc = function(str){
+            console.log(str);
+            return true;
+        }
+
         $scope.root = {}
         $http({
                         method: 'GET',
-                        url: 'awesome.json',
+                        url: 'awesomewithdetails.json',
                          headers: {
                             'Content-Type': 'application/json'
                         }
@@ -39,39 +44,29 @@ angular.module('myApp.controllers', [])
 
         $scope.title = "Awesome Interface";
         $scope.subNav1 = 0;
-        $scope.img = "img/iconset-addictive-flavour-set/png/screen_aqua_glossy.png";
+        $scope.$parent.img = "img/awesome.png";
         $scope.showTopToggle = false;
     }])
     .controller('awesomeChildController', ['$scope', function ($scope) {
-        $scope.$parent.title = "Awesome Interface";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/screen_rulers_glossy.png";
-        $scope.$parent.showTopToggle = true;
+        $scope.$parent.title = "Awesome Interface / Lists";
+        
+        $scope.$parent.showTopToggle = false;
     }])
     .controller('awesomeController', ['$scope', function ($scope) {
-        $scope.$parent.title = "Awesome Interface";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/screen_rulers_glossy.png";
-        $scope.$parent.showTopToggle = true;
+        $scope.$parent.title = "Awesome Interface / Lists";
+        $scope.$parent.showTopToggle = false;
     }])
-    .controller('MaverixCtrl', ['$scope', function ($scope) {
-        $scope.$parent.title = "Awesome Interface";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/screen_rulers_glossy.png";
+    .controller('aboutController', ['$scope', function ($scope) {
+        $scope.$parent.title = "Awesome Interface / About";
         $scope.$parent.showTopToggle = true;
     }])
   
-    .controller('FormsCtrl', ['$scope', function ($scope) {
-        $scope.$parent.title = "Forms";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/tablet.png";
-        $scope.$parent.showTopToggle = false;
-
-    }])
     .controller('homeCtrl', ['$scope', function ($scope) {
         $scope.$parent.title = "Awesome Interface Home";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/screen_aqua_glossy.png";
         $scope.$parent.showTopToggle = true;
 
     }])
-    .controller('MyCtrl2', ['$scope', function ($scope) {
-        $scope.$parent.title = "Warnings";
-        $scope.$parent.img = "img/iconset-addictive-flavour-set/png/moleskine_black.png";
+    .controller('searchController', ['$scope', function ($scope) {
+        $scope.$parent.title = "Awesome Interface / Search";
         $scope.$parent.showTopToggle = false;
     }]);

@@ -49,8 +49,7 @@
             <a class="sidebar-toggle">Hide</a>
         </div>
         <ul class="nav">
-            <li ng-class="{ selected: isActive('/maverix')}"><a href="#/maverix"><span class="entypo-list"></span>
-                Guide</a></li>
+
             <li ng-repeat="header in root.headers" ng-class="{ selected: isActive('/awesome/{{header.title}}')}"><a href="#/awesome/{{header.title}}" ng-click="displayAwesome($index)"><span class="entypo-list"></span>{{header.title}}</li></a>
         </ul>
     </div>
@@ -62,7 +61,7 @@
         </div>
         <ul class="nav">
             
-            <li ng-class="{ selected: isActive('/view2')}"><a href="#/view2"><span class="entypo-info"></span>
+            <li ng-class="{ selected: isActive('/about')}"><a href="#/about"><span class="entypo-info"></span>
                 About<!--  <span class="sidebar-badge">4</span> -->
             </a></li>
         </ul>
@@ -82,14 +81,8 @@
                                    height="48"> {{title}}</span>
 
     <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
-
-    Search Whole Website
-      <!--   <span class="osx-switch-label osx-switch-label-active">ON</span>
-        <span class="osx-switch-label osx-switch-label-inactive">OFF</span>
-        <label class="switch-light switch-candy" onclick="">
-            <input type="checkbox">
-            <a></a>
-        </label> -->
+<b>
+    <a style="color:inherit;" href="https://github.com/ankitgyawali/awesome-interface" target="_blank"><span class="entypo-share"></span> Fork me on Github</a></b>
 
     </div>
 </div>

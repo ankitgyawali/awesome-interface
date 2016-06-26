@@ -10,6 +10,8 @@ import urllib.request
 import json
 import re
 
+
+
 # Parent URL
 url = "https://raw.githubusercontent.com/sindresorhus/awesome/master/readme.md"
 
@@ -39,15 +41,12 @@ for i, mainHeader in enumerate(mainHeaders):
 				details['name'] = headerLinks.partition("[")[2].partition("]")[0]
 				if(details['url']!='' and ('http' in details['url'])):
 					# IMPORTANT: This line does the parsing of all awesome URLS
-					#details['details'] = parse.parseUrl(details['url'])
+					details['details'] = parse.parseUrl(details['url'])
 					head['titleDetails'].append(details)
 		root['headers'].append(head)
 
 
-#temp = parse.parseUrl("https://github.com/igorbarinov/awesome-data-engineering")
-
-# print(temp)
 
 
-with open('awesome.json', 'w') as outfile:
+with open('awesomewithdetails.json', 'w') as outfile:
     json.dump(root, outfile)

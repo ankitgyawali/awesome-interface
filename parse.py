@@ -32,13 +32,16 @@ def parseUrl(url):
 
 	# Split by mainheader markdown "##"
 	mainHeaders = subcontent.split('\n## ')[1:-1]
+	
 
 	# Split by subheader markdown "###" or "####"
 	for i, mainHeader in enumerate(mainHeaders): 
 		mainHeaders[i] = re.split('\n### |\n#### ',mainHeaders[i])
 
+		
 		# Always parse first section of header
 		mainHeaders[i][0] = mainHeaders[i][0].splitlines()
+		
 		section = {}
 		section['name'] = mainHeaders[i][0][0]
 		section['links'] = []
@@ -50,8 +53,11 @@ def parseUrl(url):
 			sectionDetails['name'] = sectionLinks.partition("[")[2].partition("]")[0]
 			
 			if(sectionDetails['url'].strip()!='' and ('http' in sectionDetails['url'])):
+				
 				#Grab details while you are at it
-				#sectionDetails['detail'] = sectionLinks.rsplit(") ", 1)[-1]
+				if((not ('http' in sectionLinks.rsplit(") ", 1)[-1])) and (not ('[@' in sectionLinks.rsplit(") ", 1)[-1]))):
+					sectionDetails['detail'] = sectionLinks.rsplit(") ", 1)[-1]
+
 				section['links'].append(sectionDetails)
 			# TODO: Debug
 			# else:
@@ -60,29 +66,41 @@ def parseUrl(url):
 		
 		
 		mainHeaders[i].pop(0)
+		#print (len(mainHeaders[i]))
 		# If header has subheaders parse all of them
 		if (len(mainHeaders[i]) !=0): 
 			# Loop through subsection Heading
 			for k, subHeaders in enumerate(mainHeaders[i]): 
 				mainHeaders[i][k] = mainHeaders[i][k].splitlines()
+
 				subSection = {}
+
 				subSection['title'] = mainHeaders[i][k][0]
 				subSection['links'] = []
 				# DEBUG: print (mainHeaders[i][k][0])
 				#Loop through one sub section
 				for l, subHeadersSplit in enumerate(mainHeaders[i][k]): 
 					subSectionDetails = {}
+
 					subSectionDetails['url'] = subHeadersSplit.partition("(")[2].partition(")")[0]
+					# print (subSectionDetails['url'])
 					subSectionDetails['name'] = subHeadersSplit.partition("[")[2].partition("]")[0]
 					#print (subHeadersSplit)
 					# print (subSectionDetails['url'])
 					if(subSectionDetails['url'].strip()!='' and ('http' in subSectionDetails['url'])):
+
+						#Grab details while you are at it
+						if((not ('http' in subHeadersSplit.rsplit(") ", 1)[-1])) and (not ('[@' in subHeadersSplit.rsplit(") ", 1)[-1]))):
+							subSectionDetails['detail'] = subHeadersSplit.rsplit(") ", 1)[-1]
+							
 						subSection['links'].append(subSectionDetails)
 
 				#print (subSection)
 				section['subheaders'].append(subSection)
+		
+
 		# Get rid of empty arrays
-		if(len(section['links'])!=0):
+		if(len(section['links'])!=0 or (len(section['subheaders'])!=0)):
 			if(len(section['subheaders'])==0):
 				del section['subheaders']
 			awesome['title'].append(section)
