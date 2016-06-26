@@ -29,6 +29,20 @@
 <body>
 
 <div class="sidebar">
+<div class="sidebar-navicontainer">
+        <div class="sidebar-headbox">
+            <span class="sidebar-header">Awesome Interface</span>
+            <a class="sidebar-toggle">Hide</a>
+        </div>
+        <ul class="nav">
+             <li ng-class="{ selected: isActive('/home')}"><a href="#/home"><span class="entypo-home"></span>
+                Home</a></li>
+              <li ng-class="{ selected: isActive('/search')}"><a href="#/search"><span class="entypo-search"></span>
+                Search List</a></li>
+     
+        </ul>
+    </div>
+
     <div class="sidebar-navicontainer">
         <div class="sidebar-headbox">
             <span class="sidebar-header">Awesome Lists</span>
@@ -37,71 +51,26 @@
         <ul class="nav">
             <li ng-class="{ selected: isActive('/maverix')}"><a href="#/maverix"><span class="entypo-list"></span>
                 Guide</a></li>
-            <li ng-class="{ selected: isActive('/controls')}"><a href="#/controls"><span class="entypo-plus-circled"></span>
-                Controls</a></li>
-            <li ng-class="{ selected: isActive('/forms')}"><a href="#/forms"><span class="entypo-pencil"></span>
-                Forms</a></li>
-            <li ng-class="{ selected: isActive('/modals')}"><a href="#/modals"><span class="entypo-window"></span>
-                Modals</a></li>
-            <li ng-class="{ selected: isActive('/tables')}"><a href="#/tables"><span class="entypo-list"></span>
-                Tables</a></li>
-            <li ng-class="{ selected: isActive('/icons')}"><a href="#/icons"><span class="entypo-box"></span>
-                Icons</a></li>
-            <li ng-class="{ selected: isActive('/type')}"><a href="#/type"><span class="entypo-behance"></span>
-                Typography</a></li>
-            <li ng-class="{ selected: isActive('/charts')}"><a href="#/charts"><span class="entypo-chart-bar"></span>
-                Charts</a></li>
+            <li ng-repeat="header in root.headers" ng-class="{ selected: isActive('/awesome/{{header.title}}')}"><a href="#/awesome/{{header.title}}" ng-click="displayAwesome($index)"><span class="entypo-list"></span>{{header.title}}</li></a>
         </ul>
     </div>
 
     <div class="sidebar-navicontainer">
         <div class="sidebar-headbox">
-            <span class="sidebar-header">Settings</span>
+            <span class="sidebar-header">Awesome Extras</span>
             <a class="sidebar-toggle">Hide</a>
         </div>
         <ul class="nav">
-            <li ng-class="{ selected: isActive('/view1')}"><a href="#/view1"><span class="entypo-search"></span>
-                Search List</a></li>
-            <li ng-class="{ selected: isActive('/view2')}"><a href="#/view2"><span class="entypo-attention"></span>
-                Warnings <span class="sidebar-badge">4</span>
+            
+            <li ng-class="{ selected: isActive('/view2')}"><a href="#/view2"><span class="entypo-info"></span>
+                About<!--  <span class="sidebar-badge">4</span> -->
             </a></li>
         </ul>
     </div>
 
-    <div class="sidebar-navicontainer">
-        <div class="sidebar-headbox">
-            <span class="sidebar-header">Placeholder Accounts</span>
-            <a class="sidebar-toggle">Hide</a>
-        </div>
-        <ul class="nav">
-            <li><span class="entypo-user"></span> Users</li>
-            <li><span class="entypo-users"></span> Groups</li>
-            <li><span class="entypo-vcard"></span> Certificates</li>
-            <li><span class="entypo-doc-text"></span> Protocols</li>
-            <li><span class="entypo-chart-bar"></span> Stats</li>
-        </ul>
-    </div>
 
-    <div class="sidebar-navicontainer">
-        <div class="sidebar-headbox">
-            <span class="sidebar-header">Placeholder Services</span>
-            <a class="sidebar-toggle">Hide</a>
-        </div>
-        <ul class="nav">
-            <li><a href=""><span class="entypo-archive"></span> Caching</a></li>
-            <li><a href=""><span class="entypo-drive"></span> File Sharing</a></li>
-            <li><a href=""><span class="entypo-calendar"></span> Calendar</a></li>
-            <li><a href=""><span class="entypo-book"></span> Contacts</a></li>
-            <li><a href=""><span class="entypo-mail"></span> Mail</a></li>
-            <li><a href=""><span class="entypo-chat"></span> Messages <span class="sidebar-badge">1</span></a></li>
-            <li><a href=""><span class="entypo-newspaper"></span> Profile Manager</a></li>
-            <li><a href=""><span class="entypo-ccw"></span> Backups</a></li>
-            <li><a href=""><span class="entypo-lock"></span> VPN</a></li>
-            <li><a href=""><span class="entypo-globe"></span> Websites</a></li>
-            <li><a href=""><span class="entypo-docs"></span> Wiki</a></li>
-            <li><a href=""><span class="entypo-tools"></span> Build</a></li>
-        </ul>
-    </div>
+
+
 </div>
 
 
@@ -113,12 +82,15 @@
                                    height="48"> {{title}}</span>
 
     <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
-        <span class="osx-switch-label osx-switch-label-active">ON</span>
+
+    Search Whole Website
+      <!--   <span class="osx-switch-label osx-switch-label-active">ON</span>
         <span class="osx-switch-label osx-switch-label-inactive">OFF</span>
         <label class="switch-light switch-candy" onclick="">
             <input type="checkbox">
             <a></a>
-        </label>
+        </label> -->
+
     </div>
 </div>
 
@@ -163,7 +135,7 @@
         });
 
         $(document).on("focus", function (e) {
-            console.log("Focussed");
+            //console.log("Focussed");
         });
 
         $(window).on('focus', function () {

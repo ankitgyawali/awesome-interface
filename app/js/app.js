@@ -18,7 +18,36 @@ angular.module('myApp', [
         $routeProvider.when('/type', {templateUrl: 'app/partials/type.html', controller: 'TypeCtrl'});
         $routeProvider.when('/charts', {templateUrl: 'app/partials/charts.html', controller: 'ChartCtrl'});
         $routeProvider.when('/forms', {templateUrl: 'app/partials/forms.html', controller: 'FormsCtrl'});
-        $routeProvider.when('/view1', {templateUrl: 'app/partials/partial1.html', controller: 'MyCtrl1'});
+        $routeProvider.when('/home', {templateUrl: 'app/partials/home.html', controller: 'homeCtrl'});
         $routeProvider.when('/view2', {templateUrl: 'app/partials/partial2.html', controller: 'MyCtrl2'});
-        $routeProvider.otherwise({redirectTo: '/view1'});
+        $routeProvider.when('/awesome/:list', {templateUrl: 'app/partials/awesome-list.html', controller: 'awesomeController'});
+        $routeProvider.when('/awesome/:list/:sublist*', {templateUrl: 'app/partials/awesome-sublist.html', controller: 'awesomeChildController'});
+        $routeProvider.otherwise({redirectTo: '/home'});
     }]);
+
+
+
+angular.module('myApp').factory('JSONService', ['$timeout', '$http',
+    function($timeout, $http) {
+        
+        var rootJSON = {};
+        
+        return ({ 
+            setJSON: setJSON,
+            getJSON: getJSON,
+
+        })
+
+         function setJSON(value) {
+            rootJSON = value;
+
+        }
+    
+         function getJSON() {
+            return mainJSON;
+
+        }
+ 
+
+    }
+    ]);

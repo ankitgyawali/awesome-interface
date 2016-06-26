@@ -1,0 +1,25 @@
+<h1 class="ng-scope">{{root.headers[displayIndex].title}}</h1>
+
+
+
+<hr class="ng-scope">
+
+
+
+<h3>
+
+<div class="row col-lg-12">
+	<ul>
+		<li ng-repeat="title in root.headers[displayIndex].titleDetails track by $index"><span style="font-size:100%">
+		<a href="" ng-click="gotosubList($index)">{{title.name}}</a></span>
+		&nbsp;&nbsp;
+		 <a href="{{title.url}}" target="_blank" data-toggle="tooltip" title="Go to github repository"><span class="entypo-github"></span></a>
+		</li>
+	</ul>
+</div>
+
+
+
+
+                        
+</h3>

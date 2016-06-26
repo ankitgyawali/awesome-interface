@@ -22,8 +22,13 @@ def parseUrl(url):
 		subcontent = urllib.request.urlopen(url).read().decode("utf-8")
 		print ("Parsed: " +url)
 	except:
-		print ("Failed: " +url)
-		return
+		url = url.replace("README", "readme")
+		try:
+			subcontent = urllib.request.urlopen(url).read().decode("utf-8")
+			print ("Parsed: " +url)
+		except:
+			print ("Failed: " +url)
+			return
 
 	# Split by mainheader markdown "##"
 	mainHeaders = subcontent.split('\n## ')[1:-1]
@@ -43,7 +48,10 @@ def parseUrl(url):
 			sectionDetails = {}
 			sectionDetails['url'] = sectionLinks.partition("(")[2].partition(")")[0]
 			sectionDetails['name'] = sectionLinks.partition("[")[2].partition("]")[0]
+			
 			if(sectionDetails['url'].strip()!='' and ('http' in sectionDetails['url'])):
+				#Grab details while you are at it
+				#sectionDetails['detail'] = sectionLinks.rsplit(") ", 1)[-1]
 				section['links'].append(sectionDetails)
 			# TODO: Debug
 			# else:
@@ -66,7 +74,7 @@ def parseUrl(url):
 					subSectionDetails = {}
 					subSectionDetails['url'] = subHeadersSplit.partition("(")[2].partition(")")[0]
 					subSectionDetails['name'] = subHeadersSplit.partition("[")[2].partition("]")[0]
-					#print (subSectionDetails)
+					#print (subHeadersSplit)
 					# print (subSectionDetails['url'])
 					if(subSectionDetails['url'].strip()!='' and ('http' in subSectionDetails['url'])):
 						subSection['links'].append(subSectionDetails)

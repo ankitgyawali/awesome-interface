@@ -43,5 +43,11 @@ for i, mainHeader in enumerate(mainHeaders):
 					head['titleDetails'].append(details)
 		root['headers'].append(head)
 
+
+#temp = parse.parseUrl("https://github.com/igorbarinov/awesome-data-engineering")
+
+# print(temp)
+
+
 with open('awesome.json', 'w') as outfile:
     json.dump(root, outfile)
