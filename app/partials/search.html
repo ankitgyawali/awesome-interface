@@ -1,5 +1,27 @@
+
 <h1 class="ng-scope">Search Awesome Lists</h1>
 
 
+<script>
 
+
+</script>
 <hr class="ng-scope">
+
+<input type="text" name="search"  autofocus="autofocus" ng-model="filtertext"> <button type="button" ng-click="click()">Search</button>
+<br><br>
+
+<ul>
+	<li ng-repeat="header in root.headers track by $index"><b>{{header.title}}</b>
+
+	<ul>
+		<li ng-repeat="htitle in header.titleDetails | filter: {'name':filtertext} track by $index">
+			<a href="" ng-click="gotosubListS($parent.$index,htitle)">{{htitle.name}}</a></span><span style="font-size:100%">
+		&nbsp;&nbsp;
+		 <a href="{{htitle.url}}" target="_blank" data-toggle="tooltip" title="Go to github repository"><span class="entypo-github"></span></a>
+
+		</li>
+
+	</ul>
+	</li>
+</ul>

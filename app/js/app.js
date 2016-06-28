@@ -21,27 +21,3 @@ angular.module('myApp', [
 
 
 
-angular.module('myApp').factory('JSONService', ['$timeout', '$http',
-    function($timeout, $http) {
-        
-        var rootJSON = {};
-        
-        return ({ 
-            setJSON: setJSON,
-            getJSON: getJSON,
-
-        })
-
-         function setJSON(value) {
-            rootJSON = value;
-
-        }
-    
-         function getJSON() {
-            return mainJSON;
-
-        }
- 
-
-    }
-    ]);

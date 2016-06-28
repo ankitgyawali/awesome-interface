@@ -1,150 +1,136 @@
 <!doctype html>
 <html lang="en" ng-app="myApp" ng-controller="AppCtrl">
-<head>
-    <meta charset="utf-8">
-    <!--chrome webapp- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Maverix">
-     <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Maverix">
-  
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Awesome Interface</title>
+   <head>
+      <meta charset="utf-8">
 
-    <!-- Bootstrap -->
-    <link href="bower_components/bootstrap/less/bootstrap.css" rel="stylesheet">
-    <link href="bower_components/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
-    <link href="bower_components/rangeslider.js/dist/rangeslider.css" rel="stylesheet">
-    <link href="css/maverix.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-<body>
-
-<div class="sidebar">
-<div class="sidebar-navicontainer">
-        <div class="sidebar-headbox">
-            <span class="sidebar-header">Awesome Interface</span>
-            <a class="sidebar-toggle">Hide</a>
-        </div>
-        <ul class="nav">
-             <li ng-class="{ selected: isActive('/home')}"><a href="#/home"><span class="entypo-home"></span>
-                Home</a></li>
-              <li ng-class="{ selected: isActive('/search')}"><a href="#/search"><span class="entypo-search"></span>
-                Search List</a></li>
-     
-        </ul>
-    </div>
-
-    <div class="sidebar-navicontainer">
-        <div class="sidebar-headbox">
-            <span class="sidebar-header">Awesome Lists</span>
-            <a class="sidebar-toggle">Hide</a>
-        </div>
-        <ul class="nav">
-
-            <li ng-repeat="header in root.headers" ng-class="{ selected: isActive('/awesome/{{header.title}}')}"><a href="#/awesome/{{header.title}}" ng-click="displayAwesome($index)"><span class="entypo-list"></span>{{header.title}}</li></a>
-        </ul>
-    </div>
-
-    <div class="sidebar-navicontainer">
-        <div class="sidebar-headbox">
-            <span class="sidebar-header">Awesome Extras</span>
-            <a class="sidebar-toggle">Hide</a>
-        </div>
-        <ul class="nav">
-            
-            <li ng-class="{ selected: isActive('/about')}"><a href="#/about"><span class="entypo-info"></span>
-                About<!--  <span class="sidebar-badge">4</span> -->
-            </a></li>
-        </ul>
-    </div>
-
-
-
-
-</div>
-
-
-<div class="heading-bar">
-    <!--<div class="user-bar">
-        Hi, Username | <a href="#">Sign out</a>
-    </div>-->
-    <span class="heading-one"><img ng-src="{{img}}" width="48"
-                                   height="48"> {{title}}</span>
-
-    <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
-<b>
-    <a style="color:inherit;" href="https://github.com/ankitgyawali/awesome-interface" target="_blank"><span class="entypo-share"></span> Fork me on Github</a></b>
-
-    </div>
-</div>
-
-<div class="content">
-    <div class="container-fluid container-maverix" ng-view>
-    </div>
-</div>
-
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-<script src="bower_components/rangeslider.js/dist/rangeslider.min.js"></script>
-<script src="bower_components/flot/jquery.flot.js"></script>
-<script src="bower_components/flot/jquery.flot.pie.js"></script>
-
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="app/js/app.js"></script>
-<script src="app/js/services.js"></script>
-<script src="app/js/controllers.js"></script>
-<script src="app/js/filters.js"></script>
-<script src="app/js/directives.js"></script>
-
-
-<script>
-    $(document).ready(function () {
-        // Sidebar Toggle Button Initialization
-        $(".sidebar-toggle").click(function (event) {
-            var $nextUl = $(event.target).parents().eq(1).find("ul.nav");
-            if (event.target.innerText === "Show") {
-                event.target.innerText = "Hide";
-            } else {
-                event.target.innerText = "Show";
-            }
-            $nextUl.slideToggle("fast", "swing");
-        });
-
-        $(document).on("focus", function (e) {
-            //console.log("Focussed");
-        });
-
-        $(window).on('focus', function () {
-            $("body").removeClass("blur");
-        });
-
-        $(window).on('blur', function () {
-            $("body").addClass("blur");
-        });
-
-        // Rangeslider
-        $('input[type="range"]').rangeslider({
-            // Feature detection
-            polyfill: false
-        });
-    });
-</script>
-</body>
+      <meta name="description" content="Awesome Interface, an interface implementation of awesome lists.">
+      <meta name="author" content="Ankit Gyawali">
+      <meta name="keywords" content="awesome interface, pogramming lists, guide, programming, awesome lists, awesome github, awesome resource, pogramming guide">
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="application-name" content="Awesome Interface">
+      <!-- Add to homescreen for Safari on iOS -->
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="Awesome Interface">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>Awesome Interface</title>
+      <!-- Bootstrap -->
+      <link href="bower_components/bootstrap/less/bootstrap.css" rel="stylesheet">
+      <link href="bower_components/css-toggle-switch/dist/toggle-switch.css" rel="stylesheet">
+      <link href="bower_components/rangeslider.js/dist/rangeslider.css" rel="stylesheet">
+      <link href="css/maverix.css" rel="stylesheet">
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body>
+      <div class="sidebar">
+         <div class="sidebar-navicontainer">
+            <div class="sidebar-headbox">
+               <span class="sidebar-header">Awesome Interface</span>
+               <a class="sidebar-toggle">Hide</a>
+            </div>
+            <ul class="nav">
+               <li ng-class="{ selected: isActive('/home')}"><a href="#/home"><span class="entypo-home"></span>
+                  Home</a>
+               </li>
+               <li ng-class="{ selected: isActive('/search')}"><a href="#/search"><span class="entypo-search"></span>
+                  Search List</a>
+               </li>
+            </ul>
+         </div>
+         <div class="sidebar-navicontainer">
+            <div class="sidebar-headbox">
+               <span class="sidebar-header">Awesome Lists</span>
+               <a class="sidebar-toggle">Hide</a>
+            </div>
+            <ul class="nav">
+               <li ng-repeat="header in root.headers" ng-class="{ selected: isActive('/awesome/{{header.title}}')}"><a href="#/awesome/{{header.title}}" ng-click="displayAwesome($index)"><span class="entypo-list"></span>{{header.title}}</li>
+               </a>
+            </ul>
+         </div>
+         <div class="sidebar-navicontainer">
+            <div class="sidebar-headbox">
+               <span class="sidebar-header">Awesome Extras</span>
+               <a class="sidebar-toggle">Hide</a>
+            </div>
+            <ul class="nav">
+               <li ng-class="{ selected: isActive('/about')}">
+                  <a href="#/about">
+                     <span class="entypo-info"></span>
+                     About<!--  <span class="sidebar-badge">4</span> -->
+                  </a>
+               </li>
+            </ul>
+         </div>
+      </div>
+      <div class="heading-bar">
+         <!--<div class="user-bar">
+            Hi, Username | <a href="#">Sign out</a>
+            </div>-->
+         <span class="heading-one"><img ng-src="{{img}}" width="48"
+            height="48"> {{title}}</span>
+         <div id="top-switch" class="osx-switch" ng-if="showTopToggle">
+            <b>
+            <a style="color:inherit;" href="https://github.com/ankitgyawali/awesome-interface" target="_blank"><span class="entypo-share"></span> Fork me on Github</a></b>
+         </div>
+      </div>
+      <div class="content">
+         <div class="container-fluid container-maverix" ng-view>
+         </div>
+      </div>
+      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+      <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
+      <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="bower_components/rangeslider.js/dist/rangeslider.min.js"></script>
+      <script src="bower_components/flot/jquery.flot.js"></script>
+      <script src="bower_components/flot/jquery.flot.pie.js"></script>
+      <!-- In production use:
+         <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+         -->
+      <script src="bower_components/angular/angular.js"></script>
+      <script src="bower_components/angular-route/angular-route.js"></script>
+      <script src="app/js/app.js"></script>
+      <script src="app/js/services.js"></script>
+      <script src="app/js/controllers.js"></script>
+      <script src="app/js/filters.js"></script>
+      <script src="app/js/directives.js"></script>
+      <script>
+         $(document).ready(function () {
+             // Sidebar Toggle Button Initialization
+             $(".sidebar-toggle").click(function (event) {
+                 var $nextUl = $(event.target).parents().eq(1).find("ul.nav");
+                 if (event.target.innerText === "Show") {
+                     event.target.innerText = "Hide";
+                 } else {
+                     event.target.innerText = "Show";
+                 }
+                 $nextUl.slideToggle("fast", "swing");
+             });
+         
+             $(document).on("focus", function (e) {
+                 //console.log("Focussed");
+             });
+         
+             $(window).on('focus', function () {
+                 $("body").removeClass("blur");
+             });
+         
+             $(window).on('blur', function () {
+                 $("body").addClass("blur");
+             });
+         
+             // Rangeslider
+             $('input[type="range"]').rangeslider({
+                 // Feature detection
+                 polyfill: false
+             });
+         });
+      </script>
+   </body>
 </html>
