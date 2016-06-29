@@ -36,10 +36,14 @@ angular.module('myApp.controllers', [])
 
 
         $scope.root = {}
-            //Instantiate Root data
+        // $.getJSON("https://raw.githubusercontent.com/ankitgyawali/awesome-interface/master/awesomewithdetails.json", function(data){
+        // $scope.root = data;
+        // });    
+        
+        //Instantiate Root data
         $http({
                 method: 'GET',
-                url: 'awesomewithdetails.json',
+                url: 'https://raw.githubusercontent.com/ankitgyawali/awesome-interface/master/awesomewithdetails.json',
                 headers: {
                     'Content-Type': 'application/json'
                 }
